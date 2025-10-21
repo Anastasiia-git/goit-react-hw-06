@@ -1,0 +1,33 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    width: 400px;
+    margin-bottom: 20px;
+    border: 1.5px solid #000000;
+    border-radius: 4px;
+}
+.label {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    border-radius: 4px;
+}
+input {
+    height: 40px;
+    padding-left: 10px;
+}
+.btnBox {
+    padding-left: 100px;
+}
+.btn {
+    width: 150px;
+    height: 40px;
+}
+.error {
+    color: red;
+}
+.field {
+    padding-left: 20px;
+}
