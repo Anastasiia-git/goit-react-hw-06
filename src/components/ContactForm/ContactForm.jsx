@@ -2,11 +2,15 @@ import s from "./ContactForm.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
-function ContactForm({ addContact }) {
+function ContactForm() {
+  const dispatch = useDispatch();
   const handleSubmit = (values, options) => {
-    const newContact = { id: nanoid(), ...values };
-    addContact(newContact);
+     dispatch(
+       addContact({ id: nanoid(), ...values })
+     );
     options.resetForm();
   };
   const initialValues = {
@@ -23,10 +27,13 @@ function ContactForm({ addContact }) {
       .min(3, "Too short!")
       .max(50, "Too long!")
       .trim()
-      .matches(/^\d{3}-\d{2}-\d{2}$/, "The phone number must be in the format 999-99-99"
+      .matches(
+        /^\d{3}-\d{2}-\d{2}$/,
+        "The phone number must be in the format 999-99-99"
       )
       .required("Required"),
   });
+
   return (
     <div>
       <Formik
